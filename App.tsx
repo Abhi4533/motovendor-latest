@@ -3,10 +3,10 @@ import { useColorScheme } from 'react-native';
 import { Provider as ReduxProvider } from 'react-redux';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
-
 import store from '@store';
 import { darkTheme, lightTheme } from '@utils/colors';
 import RootNavigator from '@navigation/RootNavigator';
+import i18n from '@translation/i18n';
 
 export default function App() {
   const scheme = useColorScheme();

@@ -81,11 +81,15 @@ const commonstyles = StyleSheet.create({
   m10: {
     margin: 10,
   },
-
+  m8: {
+    margin: 8,
+  },
   mt10: {
     marginTop: 10,
   },
-
+  mt20: {
+    marginTop: 20,
+  },
   mb10: {
     marginBottom: 10,
   },

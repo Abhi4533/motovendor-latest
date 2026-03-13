@@ -4,9 +4,20 @@ type Language = {
 };
 
 export const languages: Language[] = [
-  { label: 'English', value: 'English' },
-  { label: 'Marathi', value: 'Marathi' },
-  { label: 'Hindi', value: 'Hindi' },
-  { label: 'Gujarati', value: 'Gujarati' },
-  { label: 'Bhojpuri', value: 'Bhojpuri' },
+  { label: 'English', value: 'en' },
+  { label: 'Marathi', value: 'mr' },
+  { label: 'Hindi', value: 'hr' },
+  { label: 'Gujarati', value: 'gu' },
+  { label: 'Bhojpuri', value: 'bho' },
+];
+
+export const companyTypes = [
+  { label: 'Private Limited', value: 'pvt' },
+  { label: 'Partnership', value: 'partnership' },
+  { label: 'Proprietorship', value: 'prop' },
+];
+
+export const states = [
+  { label: 'Maharashtra', value: 'mh' },
+  { label: 'Gujarat', value: 'gj' },
 ];
