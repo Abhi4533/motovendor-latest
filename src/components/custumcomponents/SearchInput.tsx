@@ -5,25 +5,23 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 interface SearchInputProps extends TextInputProps {
   value: string;
   onChangeText: (text: string) => void;
-  placeholder?: string;
 }
 
 export default function SearchInput({
   value,
   onChangeText,
-  placeholder = 'Search...',
   ...rest
 }: SearchInputProps) {
   return (
     <View style={styles.container}>
-      <MaterialIcons name="search" size={22} color="#999" />
+      <MaterialIcons name="search" size={20} color="#9E9E9E" />
 
       <TextInput
         style={styles.input}
         value={value}
         onChangeText={onChangeText}
-        placeholder={placeholder}
-        placeholderTextColor="#999"
+        placeholder="Search Vehicle By Number"
+        placeholderTextColor="#9E9E9E"
         {...rest}
       />
     </View>
@@ -34,16 +32,18 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F5F5F5',
-    borderRadius: 10,
-    paddingHorizontal: 12,
     height: 45,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#D6D6D6',
+    paddingHorizontal: 12,
+    backgroundColor: '#F9F9F9',
   },
 
   input: {
     flex: 1,
     marginLeft: 8,
-    fontSize: 16,
+    fontSize: 14,
     color: '#000',
   },
 });
