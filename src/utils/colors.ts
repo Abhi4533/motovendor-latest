@@ -3,6 +3,7 @@ export const colors = {
   secondary: '#1c1c1e',
   background: '#ffffff',
   text: '#000000',
+  error: '#ff0404',
 };
 export const lightTheme = {
   background: '#ffffff',

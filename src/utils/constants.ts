@@ -21,3 +21,9 @@ export const states = [
   { label: 'Maharashtra', value: 'mh' },
   { label: 'Gujarat', value: 'gj' },
 ];
+
+export const designations = [
+  { label: 'manager', value: 'manager' },
+  { label: 'superviser', value: 'superviser' },
+  { label: 'accounts', value: 'accounts' },
+];

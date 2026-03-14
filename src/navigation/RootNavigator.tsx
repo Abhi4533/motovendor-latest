@@ -5,7 +5,7 @@ import AppDrawer from './drawer/AppDrawer';
 
 const Stack = createNativeStackNavigator();
 
-const isAuthenticated = false;
+const isAuthenticated = true;
 
 export default function RootNavigator() {
   return (

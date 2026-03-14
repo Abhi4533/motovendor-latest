@@ -77,6 +77,9 @@ const commonstyles = StyleSheet.create({
   m5: {
     margin: 5,
   },
+  m50: {
+    margin: 50,
+  },
 
   m10: {
     margin: 10,
@@ -89,6 +92,9 @@ const commonstyles = StyleSheet.create({
   },
   mt20: {
     marginTop: 20,
+  },
+  mt50: {
+    marginTop: 50,
   },
   mb10: {
     marginBottom: 10,
@@ -109,6 +115,9 @@ const commonstyles = StyleSheet.create({
 
   p10: {
     padding: 10,
+  },
+  p20: {
+    padding: 20,
   },
 
   pt10: {
@@ -134,6 +143,9 @@ const commonstyles = StyleSheet.create({
 
   relative: {
     position: 'relative',
+  },
+  gap10: {
+    gap: 10,
   },
 });
 

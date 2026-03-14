@@ -1,14 +1,16 @@
-type Authorities = {
+export type Authorities = {
   designation: string;
   fullname: string;
   mobileno: string;
   email: string;
 };
-type Vehicle = {
+
+export type Vehicle = {
   registrationNumber: string;
   capacity: string;
 };
-type legaldocuments = {
+
+export type legaldocuments = {
   gstnumber: string;
   pannumber: string;
   numberofvehicles: number;
@@ -26,7 +28,7 @@ export type VendorFormValues = {
   state: string;
   district: string;
   town: string;
-  Numberofauthrity: number;
-  Authority: Authorities;
+  Numberofauthrity: string; // ⬅️ string as per your type
+  Authority: Authorities[]; // ⬅️ array of authorities
   legaldocuments: legaldocuments;
 };

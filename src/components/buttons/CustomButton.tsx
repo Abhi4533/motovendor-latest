@@ -9,7 +9,7 @@ import {
 
 type Props = {
   title: string;
-  onPress: () => void;
+  onPress?: () => void;
   style?: ViewStyle;
   textStyle?: TextStyle;
   disabled?: boolean;

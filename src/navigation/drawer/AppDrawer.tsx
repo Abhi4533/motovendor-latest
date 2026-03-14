@@ -8,7 +8,7 @@ const Drawer = createDrawerNavigator();
 
 export default function AppDrawer() {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator screenOptions={{ headerShown: false }}>
       <Drawer.Screen name="Dashboard" component={BottomTabs} />
       {/* <Drawer.Screen name="Settings" component={Settings} /> */}
     </Drawer.Navigator>

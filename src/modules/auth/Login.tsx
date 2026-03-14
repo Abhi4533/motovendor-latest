@@ -20,15 +20,21 @@ export default function Login() {
   const [otp, setOtp] = useState(['', '', '', '']);
 
   const submit = () => {
-    navigation.navigate(AUTH_ROUTES.REGISTRATION);
+    navigation.navigate(AUTH_ROUTES.VENDORONBOARDING);
   };
 
   return (
-    <View style={[commonstyles.container, styles.container]}>
+    <View
+      style={[
+        commonstyles.container,
+        styles.container,
+        { backgroundColor: colors.background },
+      ]}
+    >
       {/* Title */}
-      <Text style={[commonstyles.textCenter, styles.title]}>
+      <Text style={[commonstyles.textCenter, styles.title, commonstyles.m10]}>
         Hi, Welcome To{'\n'}
-        <Text style={styles.brand}>Motohelp</Text>
+        <Text>Motohelp</Text>
       </Text>
 
       {/* Mobile Number */}
@@ -87,10 +93,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
     marginTop: 30,
-  },
-
-  brand: {
-    textDecorationLine: 'underline',
   },
 
   label: {
