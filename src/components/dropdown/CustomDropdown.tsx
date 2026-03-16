@@ -7,6 +7,7 @@ import {
   FlatList,
   StyleSheet,
 } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 type Option = {
   label: string;
@@ -40,9 +41,11 @@ export default function CustomDropdown({
         style={styles.dropdown}
         onPress={() => setVisible(true)}
       >
-        <Text style={styles.text}>
+        <Text style={styles.text} numberOfLines={1} ellipsizeMode="tail">
           {selectedItem ? selectedItem.label : placeholder}
         </Text>
+
+        <MaterialIcons name="keyboard-arrow-down" size={24} color="#777" />
       </TouchableOpacity>
 
       <Modal visible={visible} transparent animationType="slide">
@@ -81,12 +84,12 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     fontWeight: '600',
   },
-  dropdown: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 14,
-    borderRadius: 8,
-  },
+  // dropdown: {
+  //   borderWidth: 1,
+  //   borderColor: '#ccc',
+  //   padding: 14,
+  //   borderRadius: 8,
+  // },
   text: {
     fontSize: 16,
   },
@@ -105,5 +108,15 @@ const styles = StyleSheet.create({
     padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
+  },
+  dropdown: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    borderRadius: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });

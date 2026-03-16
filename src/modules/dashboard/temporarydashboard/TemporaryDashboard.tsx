@@ -90,9 +90,10 @@ export default function TemporaryDashboard() {
             <Text style={styles.cardTitle}>Bank Details</Text>
             <Text style={styles.locked}>Locked</Text>
 
-            <TouchableOpacity style={styles.unlockBtn}>
-              <CustomButton title="Unlock" disabled />
-            </TouchableOpacity>
+            <CustomButton
+              title="Unlock"
+              onPress={() => navigation.navigate(HOME_ROUTES.ADDBANK_DETAILS)}
+            />
           </CustomCard>
         </View>
       </View>

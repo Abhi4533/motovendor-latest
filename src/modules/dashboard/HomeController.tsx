@@ -5,9 +5,9 @@ import Dashboard from './Dashboard';
 
 export default function HomeController() {
   const vendorStatus = {
-    vehicleAdded: false,
-    kycCompleted: false,
-    bankAdded: false,
+    vehicleAdded: true,
+    kycCompleted: true,
+    bankAdded: true,
   };
 
   const onboardingCompleted =

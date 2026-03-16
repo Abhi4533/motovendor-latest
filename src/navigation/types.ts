@@ -14,6 +14,9 @@ export type HomeStackParamList = {
   HomeController: undefined;
   TemporaryDashboard: undefined;
   VehicleScreen: undefined;
+  ValidateVehicles: undefined;
+  VerifiedVehicles: undefined;
+  AddBankdetails: undefined;
 };
 
 export type TabParamList = {

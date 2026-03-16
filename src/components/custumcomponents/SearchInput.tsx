@@ -1,19 +1,28 @@
 import React from 'react';
-import { View, TextInput, StyleSheet, TextInputProps } from 'react-native';
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  TextInputProps,
+  StyleProp,
+  ViewStyle,
+} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 interface SearchInputProps extends TextInputProps {
   value: string;
   onChangeText: (text: string) => void;
+  containerStyle?: StyleProp<ViewStyle>;
 }
 
 export default function SearchInput({
   value,
   onChangeText,
+  containerStyle,
   ...rest
 }: SearchInputProps) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, containerStyle]}>
       <MaterialIcons name="search" size={20} color="#9E9E9E" />
 
       <TextInput
