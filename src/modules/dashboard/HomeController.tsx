@@ -1,19 +1,27 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import React, { useEffect } from 'react';
 import TemporaryDashboard from './temporarydashboard/TemporaryDashboard';
 import Dashboard from './Dashboard';
+import { useAppSelector } from '@app/hooks/hooks';
+import { useNavigation } from '@react-navigation/native';
+import { HOME_ROUTES } from '@navigation/routes';
 
 export default function HomeController() {
-  const vendorStatus = {
-    vehicleAdded: true,
-    kycCompleted: true,
-    bankAdded: true,
-  };
+  const navigation = useNavigation<any>();
 
-  const onboardingCompleted =
-    vendorStatus.vehicleAdded &&
-    vendorStatus.kycCompleted &&
-    vendorStatus.bankAdded;
+  const { vehicleAdded, kycCompleted, bankAdded } = useAppSelector(
+    state => state.onboarding.vendorStatus,
+  );
+
+  const onboardingCompleted = vehicleAdded && bankAdded;
+  // const onboardingCompleted = true;
+  // useEffect(() => {
+  //   if (onboardingCompleted) {
+  //     navigation.replace(HOME_ROUTES.DASHBOARD);
+  //   }
+  // }, [onboardingCompleted]);
+  console.log(onboardingCompleted);
+
   if (!onboardingCompleted) {
     return <TemporaryDashboard />;
   }

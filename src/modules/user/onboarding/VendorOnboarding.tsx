@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Alert } from 'react-native';
 import { Formik } from 'formik';
 import ProgressBar from '@components/progressbars/ProgressBar';
 import { VendorFormValues } from './types';
@@ -9,6 +9,9 @@ import AuthorityAdd from './AuthorityAdd'; // Step 3
 import LegalDocuments from './LegalDocuments'; // Step 4
 import { colors } from '@utils/colors';
 import commonstyles from '@utils/commonstyles';
+import { useDispatch } from 'react-redux';
+import { setAuthData } from '@app/redux/slices/AuthSlice';
+import KeyboardWrapper from '@components/custumcomponents/KeyboardWrapper';
 
 const initialValues: VendorFormValues = {
   companyName: '',
@@ -21,8 +24,8 @@ const initialValues: VendorFormValues = {
   state: '',
   district: '',
   town: '',
-  Numberofauthrity: '', // string, empty initially
-  Authority: [], // empty array
+  Numberofauthrity: '',
+  Authority: [],
   legaldocuments: {
     gstnumber: '',
     pannumber: '',
@@ -32,7 +35,40 @@ const initialValues: VendorFormValues = {
 };
 
 export default function VendorOnboarding() {
+  const dispatch = useDispatch();
   const [step, setStep] = useState(1);
+  const handleFinalSubmit = async (values: VendorFormValues) => {
+    try {
+      console.log('Final submit values:', values);
+
+      // replace this with your real API call
+      // const response = await vendorRegisterApi(values);
+
+      const response = {
+        token: 'dummy_access_token',
+        refreshToken: 'dummy_refresh_token',
+        user: {
+          id: '1',
+          name: 'Abhishek',
+          mobile: '7506133186',
+          companyName: 'abc',
+        },
+      };
+
+      dispatch(
+        setAuthData({
+          token: '123',
+          refreshToken: '6666',
+          user: 'aaaaa',
+        }),
+      );
+
+      Alert.alert('Success', 'User registered and authenticated successfully');
+    } catch (error) {
+      console.log('Registration error:', error);
+      Alert.alert('Error', 'Registration failed');
+    }
+  };
 
   const handleNext = () => setStep(prev => Math.min(prev + 1, 4));
   const handlePrev = () => setStep(prev => Math.max(prev - 1, 1));
@@ -55,21 +91,20 @@ export default function VendorOnboarding() {
   return (
     <Formik<VendorFormValues>
       initialValues={initialValues}
-      onSubmit={values => {
-        console.log('Final submit:', values);
-        // Handle final submission (API call, navigation, etc.)
-      }}
+      onSubmit={handleFinalSubmit}
     >
       {() => (
-        <View
-          style={[commonstyles.container, commonstyles.p10, styles.container]}
-        >
-          <Text style={[commonstyles.bold, styles.title]}>
-            Vendor Onboarding
-          </Text>
-          <ProgressBar currentStep={step} />
-          {renderStep()}
-        </View>
+        <KeyboardWrapper>
+          <View
+            style={[commonstyles.container, commonstyles.p10, styles.container]}
+          >
+            <Text style={[commonstyles.bold, styles.title]}>
+              Vendor Onboarding
+            </Text>
+            <ProgressBar currentStep={step} />
+            {renderStep()}
+          </View>
+        </KeyboardWrapper>
       )}
     </Formik>
   );

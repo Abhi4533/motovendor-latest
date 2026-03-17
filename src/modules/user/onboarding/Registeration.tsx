@@ -61,13 +61,10 @@ export default function VendorForm({ onNext }: Props) {
 
       {/* Row 1 */}
       <View style={styles.row}>
-        <CustomInput
-          name="pincode"
-          label="Pincode"
-          placeholder="Enter Pincode"
-          style={{ flex: 1 }}
-          keyboardType="numeric"
-        />
+        <View style={{ flex: 1 }}>
+          <CustomInput name="pincode" label="Pincode" keyboardType="numeric" />
+        </View>
+
         <View style={{ flex: 1 }}>
           <CustomDropdown
             data={states}

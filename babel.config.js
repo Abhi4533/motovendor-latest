@@ -7,7 +7,7 @@ module.exports = {
         root: ['./'],
         alias: {
           '@app': './src/app',
-          '@store': './src/app/store',
+          '@store': './src/app/redux',
           '@components': './src/components',
           '@modules': './src/modules',
           '@navigation': './src/navigation',

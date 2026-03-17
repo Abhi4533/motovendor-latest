@@ -2,12 +2,15 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AuthNavigator from '@modules/auth/AuthNavigator';
 import AppDrawer from './drawer/AppDrawer';
+import { useAppSelector } from '@app/hooks/hooks';
 
 const Stack = createNativeStackNavigator();
 
-const isAuthenticated = true;
-
 export default function RootNavigator() {
+  const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated);
+  // const isAuthenticated = true;
+  console.log(isAuthenticated);
+
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       {isAuthenticated ? (

@@ -14,6 +14,7 @@ import {
   launchImageLibrary,
   ImagePickerResponse,
 } from 'react-native-image-picker';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props {
   label?: string;
@@ -92,7 +93,10 @@ export default function CustomImagePicker({ label, onImageSelected }: Props) {
         {imageUri ? (
           <Image source={{ uri: imageUri }} style={styles.image} />
         ) : (
-          <Text style={styles.placeholder}>{label}</Text>
+          <View style={styles.placeholderContainer}>
+            <Icon name="camera-outline" size={24} color="#777" />
+            <Text style={styles.placeholder}>{label}</Text>
+          </View>
         )}
       </TouchableOpacity>
 
@@ -104,10 +108,12 @@ export default function CustomImagePicker({ label, onImageSelected }: Props) {
         >
           <View style={styles.modalContainer}>
             <TouchableOpacity style={styles.option} onPress={openCamera}>
+              <Icon name="camera-outline" size={24} color="#777" />
               <Text style={styles.optionText}>Open Camera</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.option} onPress={openGallery}>
+              <Icon name="camera-outline" size={24} color="#777" />
               <Text style={styles.optionText}>Choose from Gallery</Text>
             </TouchableOpacity>
 
@@ -174,5 +180,10 @@ const styles = StyleSheet.create({
 
   cancelText: {
     color: 'red',
+  },
+  placeholderContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
 });

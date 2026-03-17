@@ -9,25 +9,32 @@ import { useNavigation } from '@react-navigation/native';
 import { HOME_ROUTES } from '@navigation/routes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { HomeStackParamList } from '@navigation/types';
+import { useAppSelector } from '@app/hooks/hooks';
 type NavigationProp = NativeStackNavigationProp<HomeStackParamList>;
 
 export default function TemporaryDashboard() {
+  const { vehicleAdded, kycCompleted, bankAdded } = useAppSelector(
+    state => state.onboarding.vendorStatus,
+  );
+  const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated);
+
+  console.log({ vehicleAdded, kycCompleted, bankAdded, isAuthenticated });
   const navigation = useNavigation<NavigationProp>();
   const steps = [
     {
       title: 'Registration',
       subtitle: 'Registration Completed Successfully',
-      status: 'completed',
+      status: isAuthenticated,
     },
     {
       title: 'Validate Vehicle',
       subtitle: 'Validate at least 1 vehicle to proceed',
-      status: 'pending',
+      status: vehicleAdded,
     },
     {
       title: 'KYC Verification',
       subtitle: 'KYC unlocks after adding 1 vehicle',
-      status: 'locked',
+      status: bankAdded,
     },
   ];
   // const Add = () => {
@@ -41,7 +48,7 @@ export default function TemporaryDashboard() {
       >
         {/* STEP PROGRESS */}
         {steps.map((step, index) => {
-          const isCompleted = step.status === 'completed';
+          const isCompleted = step.status === true;
           const isLast = index === steps.length - 1;
 
           return (

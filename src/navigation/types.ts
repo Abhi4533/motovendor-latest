@@ -17,6 +17,12 @@ export type HomeStackParamList = {
   ValidateVehicles: undefined;
   VerifiedVehicles: undefined;
   AddBankdetails: undefined;
+  Dashboard: undefined;
+  OnboardScreen: undefined;
+  DriverScan: undefined;
+  DriverIndex: undefined;
+  DiscontinueDriver: undefined;
+  AddDriver: undefined;
 };
 
 export type TabParamList = {

@@ -1,11 +1,14 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import DashboardAppheader from '@components/custumcomponents/DashboardAppheader';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import spacing from '@utils/spacing';
 import { moderateScale } from '@utils/responsive';
+import { HOME_ROUTES } from '@navigation/routes';
+import BottomModal from '@components/modal/BottomModal';
+import DriverSheet from '@components/modal/DriverSheet';
 
 const dashboardCards = [
   {
@@ -50,12 +53,13 @@ const dashboardCards = [
         color="#0F4DB8"
       />
     ),
-    route: 'Driver',
+    route: HOME_ROUTES.DRIVER_ONBOARDSCREEN,
   },
 ];
 
 export default function Dashboard() {
   const navigation = useNavigation<any>();
+  const [open, setOpen] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -83,7 +87,13 @@ export default function Dashboard() {
               key={item.title}
               style={styles.touchCard}
               activeOpacity={0.8}
-              onPress={() => navigation.navigate(item.route)}
+              onPress={() => {
+                if (item.title === 'Driver') {
+                  setOpen(true); // 👈 open bottom sheet
+                } else {
+                  navigation.navigate(item.route);
+                }
+              }}
             >
               <View style={styles.card}>
                 <View style={styles.iconWrapper}>{item.icon}</View>
@@ -93,6 +103,22 @@ export default function Dashboard() {
           ))}
         </View>
       </View>
+
+      <DriverSheet
+        visible={open}
+        onClose={() => setOpen(false)}
+        onAction={type => {
+          if (type === 'Onboard') {
+            navigation.navigate(HOME_ROUTES.DRIVER_ONBOARDSCREEN);
+          }
+          if (type === 'add') {
+            navigation.navigate(HOME_ROUTES.ADDDRIVER);
+          }
+          if (type === 'discontinue') {
+            navigation.navigate(HOME_ROUTES.DISCONTINUEDRIVER);
+          }
+        }}
+      />
     </View>
   );
 }

@@ -6,6 +6,11 @@ import AddVehicle from '@modules/vehicles/AddVehicle';
 import ValidateVehicles from '@modules/vehicles/ValidateVehicles';
 import VerifiedVehicles from '@modules/vehicles/VerifiedVehicles';
 import Bankdetails from '@modules/payment/Bankdetails';
+import OnboardDriver from '@modules/driver/OnboardDriver';
+import DriverScan from '@modules/driver/DriverScan';
+import DriverIndex from '@modules/driver/DriverIndex';
+import DriverDiscontinue from '@modules/driver/DriverDiscontinue';
+import AddDriver from '@modules/driver/AddDriver';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,12 +19,17 @@ export default function HomeStack() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="HomeController" component={HomeController} />
 
-      <Stack.Screen name="TemporaryDashboard" component={TemporaryDashboard} />
+      {/* <Stack.Screen name="TemporaryDashboard" component={TemporaryDashboard} /> */}
 
       <Stack.Screen name="VehicleScreen" component={AddVehicle} />
       <Stack.Screen name="ValidateVehicles" component={ValidateVehicles} />
       <Stack.Screen name="VerifiedVehicles" component={VerifiedVehicles} />
       <Stack.Screen name="AddBankdetails" component={Bankdetails} />
+      <Stack.Screen name="OnboardScreen" component={OnboardDriver} />
+      <Stack.Screen name="DriverScan" component={DriverScan} />
+      <Stack.Screen name="DriverIndex" component={DriverIndex} />
+      <Stack.Screen name="DiscontinueDriver" component={DriverDiscontinue} />
+      <Stack.Screen name="AddDriver" component={AddDriver} />
     </Stack.Navigator>
   );
 }

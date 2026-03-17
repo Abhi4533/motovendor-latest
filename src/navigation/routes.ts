@@ -12,4 +12,10 @@ export const HOME_ROUTES = {
   VALIDATE_VEHICLES: 'ValidateVehicles',
   VERIFIES_VEHICLES: 'VerifiedVehicles',
   ADDBANK_DETAILS: 'AddBankdetails',
+  DASHBOARD: 'Dashboard',
+  DRIVER_ONBOARDSCREEN: 'OnboardScreen',
+  DRIVERSCAN: 'DriverScan',
+  DRIVERINDEX: 'DriverIndex',
+  DISCONTINUEDRIVER: 'DiscontinueDriver',
+  ADDDRIVER: 'AddDriver',
 } as const;

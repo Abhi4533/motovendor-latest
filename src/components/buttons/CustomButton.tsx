@@ -1,3 +1,4 @@
+import { colors } from '@utils/colors';
 import React from 'react';
 import {
   Text,
@@ -35,7 +36,7 @@ export default function CustomButton({
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: colors.primary,
     paddingVertical: 14,
     paddingHorizontal: 20,
     borderRadius: 8,

@@ -7,8 +7,17 @@ import { colors } from '@utils/colors';
 import spacing from '@utils/spacing';
 import LocalInput from '@components/Inputs/LocalInput';
 import CustomButton from '@components/buttons/CustomButton';
+import {
+  setBankAdded,
+  setVehicleAdded,
+} from '@app/redux/slices/onboardingSlice';
+import { useAppDispatch } from '@app/hooks/hooks';
+import { useNavigation } from '@react-navigation/native';
+import { HOME_ROUTES } from '@navigation/routes';
 
 export default function Bankdetails() {
+  const dispatch = useAppDispatch();
+  const navigation = useNavigation();
   const [values, setValues] = useState({
     accountHolder: '',
     accountType: '',
@@ -27,7 +36,9 @@ export default function Bankdetails() {
   };
 
   const handleSubmit = () => {
-    console.log(values);
+    dispatch(setBankAdded(true));
+    navigation.goBack();
+    // navigation.navigate(HOME_ROUTES.TEMP_DASHBOARD);
   };
 
   return (

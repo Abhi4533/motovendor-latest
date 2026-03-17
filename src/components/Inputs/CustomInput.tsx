@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import { useField } from 'formik';
 import { colors } from '@utils/colors';
+import { moderateScale, normalizeFont } from '@utils/responsive';
+import spacing from '@utils/spacing';
 
 interface Props extends TextInputProps {
   name: string;
@@ -19,7 +21,6 @@ export default function CustomInput({ name, label, ...rest }: Props) {
   const [field, meta, helpers] = useField(name);
   const [isFocused, setIsFocused] = useState(false);
 
-  // Animated value for label position
   const animatedLabel = useRef(new Animated.Value(field.value ? 1 : 0)).current;
 
   useEffect(() => {
@@ -30,26 +31,25 @@ export default function CustomInput({ name, label, ...rest }: Props) {
     }).start();
   }, [isFocused, field.value]);
 
-  // Interpolated styles for floating label
   const labelStyle = {
     position: 'absolute',
-    left: 12,
+    left: spacing.sm,
     top: animatedLabel.interpolate({
       inputRange: [0, 1],
-      outputRange: [18, -8], // moves from inside input to above border
+      outputRange: [moderateScale(18), moderateScale(-8)],
     }),
     fontSize: animatedLabel.interpolate({
       inputRange: [0, 1],
-      outputRange: [16, 12],
+      outputRange: [normalizeFont(14), normalizeFont(11)],
     }),
     color:
       meta.error && meta.touched
         ? colors.error
         : isFocused
         ? colors.primary
-        : '#999',
+        : '#000',
     backgroundColor: '#fff',
-    paddingHorizontal: 4,
+    paddingHorizontal: spacing.xs,
   };
 
   return (
@@ -62,6 +62,7 @@ export default function CustomInput({ name, label, ...rest }: Props) {
         ]}
       >
         <Animated.Text style={labelStyle}>{label}</Animated.Text>
+
         <TextInput
           style={styles.input}
           value={field.value}
@@ -74,6 +75,7 @@ export default function CustomInput({ name, label, ...rest }: Props) {
           {...rest}
         />
       </View>
+
       {meta.error && meta.touched && (
         <Text style={styles.errorText}>{meta.error}</Text>
       )}
@@ -83,34 +85,42 @@ export default function CustomInput({ name, label, ...rest }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 18,
+    marginBottom: spacing.lg,
+    width: '100%',
   },
+
   inputContainer: {
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 8,
-    paddingHorizontal: 12,
-    paddingTop: 16, // give space for label
-    paddingBottom: 8,
+    borderRadius: moderateScale(8),
+    paddingHorizontal: spacing.md,
+    paddingTop: spacing.lg,
+    paddingBottom: spacing.sm,
     backgroundColor: '#fff',
     justifyContent: 'center',
   },
+
   input: {
-    fontSize: 16,
+    fontSize: normalizeFont(14),
     padding: 0,
     margin: 0,
     color: colors.text,
+    fontWeight: '600',
+    width: '100%',
   },
+
   focusBorder: {
     borderColor: colors.primary,
   },
+
   errorBorder: {
     borderColor: colors.error,
   },
+
   errorText: {
-    fontSize: 12,
+    fontSize: normalizeFont(11),
     color: colors.error,
-    marginTop: 4,
-    marginLeft: 2,
+    marginTop: spacing.xs,
+    marginLeft: spacing.xs,
   },
 });

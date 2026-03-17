@@ -22,37 +22,31 @@ export default function AuthorityAdd({ onNext, onPrev }: Props) {
       <Text style={styles.header}>Add Authority Details</Text>
       <ScrollView showsVerticalScrollIndicator={false}>
         {values.Authority.map((_, index) => (
-          <CustomCard>
-            {/* Designation Dropdown */}
+          <CustomCard key={index}>
             <Text>Designation</Text>
 
             <CustomDropdown
               data={designations}
+              value={values.Authority[index].designation} // 👈 important
               onSelect={item =>
-                setFieldValue('Authority.designation', item.value)
+                setFieldValue(`Authority[${index}].designation`, item.value)
               }
             />
 
-            {/* Full Name Input */}
             <CustomInput
               label="Full Name"
-              name="Authority.fullname"
-              // placeholder="Enter Full Name"
+              name={`Authority[${index}].fullname`}
             />
 
-            {/* Mobile Number Input */}
             <CustomInput
               label="Mobile Number"
-              name="Authority.mobileno"
-              // placeholder="Enter Mobile Number"
+              name={`Authority[${index}].mobileno`}
               keyboardType="phone-pad"
             />
 
-            {/* Email Address Input */}
             <CustomInput
               label="Email Address"
-              name="Authority.email"
-              // placeholder="Enter Email"
+              name={`Authority[${index}].email`}
               keyboardType="email-address"
             />
           </CustomCard>
