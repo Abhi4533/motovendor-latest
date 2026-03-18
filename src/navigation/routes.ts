@@ -18,4 +18,6 @@ export const HOME_ROUTES = {
   DRIVERINDEX: 'DriverIndex',
   DISCONTINUEDRIVER: 'DiscontinueDriver',
   ADDDRIVER: 'AddDriver',
+  LICENSEADD: 'LicenseAdd',
+  ASSIGNVEHICLE: 'AssignVehicle',
 } as const;

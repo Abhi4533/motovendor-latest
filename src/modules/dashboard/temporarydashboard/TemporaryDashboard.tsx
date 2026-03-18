@@ -84,12 +84,10 @@ export default function TemporaryDashboard() {
             <Text style={styles.cardTitle}>Validate Vehicle</Text>
             <Text style={styles.smallText}>0 Added</Text>
 
-            <TouchableOpacity style={styles.addBtn}>
-              <CustomButton
-                title="Add"
-                onPress={() => navigation.navigate(HOME_ROUTES.VEHICLE_SCREEN)}
-              />
-            </TouchableOpacity>
+            <CustomButton
+              title="Add"
+              onPress={() => navigation.navigate(HOME_ROUTES.VEHICLE_SCREEN)}
+            />
           </CustomCard>
 
           <CustomCard style={styles.bankCard}>

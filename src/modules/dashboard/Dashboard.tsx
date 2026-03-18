@@ -7,8 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import spacing from '@utils/spacing';
 import { moderateScale } from '@utils/responsive';
 import { HOME_ROUTES } from '@navigation/routes';
-import BottomModal from '@components/modal/BottomModal';
-import DriverSheet from '@components/modal/DriverSheet';
+import CustomBottomSheet from '@components/modal/CustomBottomSheet';
 
 const dashboardCards = [
   {
@@ -59,7 +58,15 @@ const dashboardCards = [
 
 export default function Dashboard() {
   const navigation = useNavigation<any>();
-  const [open, setOpen] = useState(false);
+  const [sheetConfig, setSheetConfig] = useState<{
+    visible: boolean;
+    title: string;
+    actions: { label: string; value: string }[];
+  }>({
+    visible: false,
+    title: '',
+    actions: [],
+  });
 
   return (
     <View style={styles.container}>
@@ -89,7 +96,25 @@ export default function Dashboard() {
               activeOpacity={0.8}
               onPress={() => {
                 if (item.title === 'Driver') {
-                  setOpen(true); // 👈 open bottom sheet
+                  setSheetConfig({
+                    visible: true,
+                    title: 'Driver',
+                    actions: [
+                      { label: 'Onboard Driver', value: 'onboard' },
+                      { label: 'Add Driver', value: 'add' },
+                      { label: 'Discontinue Driver', value: 'discontinue' },
+                    ],
+                  });
+                } else if (item.title === 'Vehicle') {
+                  setSheetConfig({
+                    visible: true,
+                    title: 'Vehicle',
+                    actions: [
+                      { label: 'Assign Vehicle', value: 'Assign' },
+                      { label: 'Add Vehicle', value: 'add' },
+                      { label: 'Vehicle Details', value: 'Details' },
+                    ],
+                  });
                 } else {
                   navigation.navigate(item.route);
                 }
@@ -104,18 +129,35 @@ export default function Dashboard() {
         </View>
       </View>
 
-      <DriverSheet
-        visible={open}
-        onClose={() => setOpen(false)}
-        onAction={type => {
-          if (type === 'Onboard') {
-            navigation.navigate(HOME_ROUTES.DRIVER_ONBOARDSCREEN);
+      <CustomBottomSheet
+        visible={sheetConfig.visible}
+        title={sheetConfig.title}
+        actions={sheetConfig.actions}
+        onClose={() => setSheetConfig(prev => ({ ...prev, visible: false }))}
+        onAction={value => {
+          // Close first
+          setSheetConfig(prev => ({ ...prev, visible: false }));
+
+          // Handle actions
+          if (sheetConfig.title === 'Driver') {
+            if (value === 'onboard') {
+              navigation.navigate(HOME_ROUTES.DRIVER_ONBOARDSCREEN);
+            } else if (value === 'add') {
+              navigation.navigate(HOME_ROUTES.ADDDRIVER);
+            } else if (value === 'discontinue') {
+              navigation.navigate(HOME_ROUTES.DISCONTINUEDRIVER);
+            }
           }
-          if (type === 'add') {
-            navigation.navigate(HOME_ROUTES.ADDDRIVER);
-          }
-          if (type === 'discontinue') {
-            navigation.navigate(HOME_ROUTES.DISCONTINUEDRIVER);
+
+          if (sheetConfig.title === 'Vehicle') {
+            if (value === 'Assign') {
+              navigation.navigate(HOME_ROUTES.ASSIGNVEHICLE);
+            }
+            if (value === 'add') {
+              navigation.navigate(HOME_ROUTES.VEHICLE_SCREEN);
+            }
+            if (value === 'Details') {
+            }
           }
         }}
       />

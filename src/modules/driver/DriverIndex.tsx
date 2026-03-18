@@ -74,7 +74,7 @@ export default function DriverIndex() {
   );
 
   const submit = () => {
-    navigation.navigate(HOME_ROUTES.DASHBOARD);
+    navigation.navigate(HOME_ROUTES.LICENSEADD);
   };
   return (
     <View style={styles.container}>

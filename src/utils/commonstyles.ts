@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native';
+import { colors } from './colors';
 
 const commonstyles = StyleSheet.create({
   /* Layout */
   container: {
     flex: 1,
+    backgroundColor: colors.background,
   },
 
   flex1: {

@@ -11,6 +11,8 @@ import DriverScan from '@modules/driver/DriverScan';
 import DriverIndex from '@modules/driver/DriverIndex';
 import DriverDiscontinue from '@modules/driver/DriverDiscontinue';
 import AddDriver from '@modules/driver/AddDriver';
+import LicenseAdd from '@modules/driver/documents/LicenseAdd';
+import AssignVehicle from '@modules/vehicles/AssignVehicle';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +32,8 @@ export default function HomeStack() {
       <Stack.Screen name="DriverIndex" component={DriverIndex} />
       <Stack.Screen name="DiscontinueDriver" component={DriverDiscontinue} />
       <Stack.Screen name="AddDriver" component={AddDriver} />
+      <Stack.Screen name="LicenseAdd" component={LicenseAdd} />
+      <Stack.Screen name="AssignVehicle" component={AssignVehicle} />
     </Stack.Navigator>
   );
 }

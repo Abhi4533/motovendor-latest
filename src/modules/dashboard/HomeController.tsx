@@ -13,8 +13,8 @@ export default function HomeController() {
     state => state.onboarding.vendorStatus,
   );
 
-  const onboardingCompleted = vehicleAdded && bankAdded;
-  // const onboardingCompleted = true;
+  // const onboardingCompleted = vehicleAdded && bankAdded;
+  const onboardingCompleted = true;
   // useEffect(() => {
   //   if (onboardingCompleted) {
   //     navigation.replace(HOME_ROUTES.DASHBOARD);

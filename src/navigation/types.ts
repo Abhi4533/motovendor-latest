@@ -23,6 +23,8 @@ export type HomeStackParamList = {
   DriverIndex: undefined;
   DiscontinueDriver: undefined;
   AddDriver: undefined;
+  LicenseAdd: undefined;
+  AssignVehicle: undefined;
 };
 
 export type TabParamList = {

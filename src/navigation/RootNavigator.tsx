@@ -7,8 +7,8 @@ import { useAppSelector } from '@app/hooks/hooks';
 const Stack = createNativeStackNavigator();
 
 export default function RootNavigator() {
-  const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated);
-  // const isAuthenticated = true;
+  // const isAuthenticated = useAppSelector(state => state.auth.isAuthenticated);
+  const isAuthenticated = true;
   console.log(isAuthenticated);
 
   return (

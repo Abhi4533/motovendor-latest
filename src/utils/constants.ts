@@ -2,7 +2,12 @@ type Language = {
   label: string;
   value: string;
 };
-
+type User = {
+  id: string;
+  name: string;
+  age: number;
+  city: string;
+};
 export const languages: Language[] = [
   { label: 'English', value: 'en' },
   { label: 'Marathi', value: 'mr' },
@@ -96,4 +101,15 @@ export const verifiedvehicles = [
     image4: 'https://via.placeholder.com/150',
     status: 'verified',
   },
+];
+
+export const columns = [
+  { key: 'name', title: 'Name', flex: 2, minWidth: 120 },
+  { key: 'age', title: 'Age', flex: 1, minWidth: 80 },
+  { key: 'city', title: 'City', flex: 2, minWidth: 120 },
+];
+
+export const licensedata: User[] = [
+  { id: '1', name: 'Abhishek', age: 25, city: 'Mumbai' },
+  { id: '2', name: 'Rahul', age: 28, city: 'Delhi' },
 ];
